@@ -1,0 +1,229 @@
+<!-- "doc" type, with tabs usage as template--><!-- Author: Kevin Cyu--><!-- include mixins--><!-- mixin - list--><!-- main--><!DOCTYPE html><html><!-- include header--><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Chapter 0</title><link rel="stylesheet" href="./asset/highlight.min.css"/><link rel="stylesheet" href="./asset/paper.min.css"/><link rel="stylesheet" href="./asset/monokai.css"/><link rel="stylesheet" href="./asset/main.css"/><link rel="stylesheet" href="./asset/cn-font.css"/><script type="text/x-mathjax-config">MathJax.Hub.Config({jax: ["input/TeX", "output/HTML-CSS"],extensions: ["tex2jax.js"],"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] },tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], displayMath: [ ["$$","$$"], ["\\[", "\\]"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno" },TeX: { noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } } },messageStyle: "none"});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script><script src="./asset/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();</script></head><body><div class="container"><div class="paper"><div class="demo-title" id="top"><div class="row flex-center"><div class="text-center"> <h1 class=".cn">Chapter 0</h1></div></div></div><div class="section"><div class="flex-spaces tabs">
+<input id="tab1" type="radio" name="tabs" checked/>
+<label for="tab1">01_Introduction </label>
+
+<input id="tab2" type="radio" name="tabs"/>
+<label for="tab2">02_Additivity </label>
+
+<input id="tab3" type="radio" name="tabs"/>
+<label for="tab3">03_Homogeneous </label>
+
+<input id="tab4" type="radio" name="tabs"/>
+<label for="tab4">sign </label>
+
+<div class="content" id="content1"><p><h3>什麼是線性代數(´･ω･`)？</h3>
+<ul>
+<li>
+<p><strong>線性</strong>
+令f(x)是一個函數</p>
+<p>定義１(初階數學適用)</p>
+<ul>
+<li>口語化定義：$f(x)$ 在座標上畫出來是一條直線。則我們稱 $x$ 和 $f(x)$ 為線性關係。</li>
+<li>專業版定義：$f(x)$ 為<strong>一階多項式</strong>，即可表示成$f(x) = ax + b$，其中$a,b$ 為常數。則我們稱 $x$ 和 $f(x)$ 為線性關係。</li>
+</ul>
+<p>定義２ (請記得這個)</p>
+<ul>
+<li>口語化定義：$f(x)$ 在座標上畫出來是一條過<strong>原點</strong>的直線。則我們稱 $x$ 和 $f(x)$ 為線性關係。</li>
+<li>專業版定義：凡具有**可加性(Additivity)<strong>及</strong>一次齊次性(Homogeneous)**的 $f(x)$ ，皆與 $x$ 呈線性關係。</li>
+</ul>
+<p><em>這裡是廢話：我一開始就已經說函數了，如果您還在糾結鉛直線，那我只好在這裡提 <s>(嘲)</s> 醒 <s>(笑)</s> 你惹</em></p>
+</li>
+<li>
+<p><strong>代數</strong></p>
+<p>這邊指的是我們用來當作未知數，諸如： $x$ , $y$ , $z$ , $x_1$  , $x_2$ , .... , $x_n$ 的東西。基本上初學線性代數了解到這邊就夠了。更精準的定義請自己去google ψ(｀∇´)ψ</p>
+</li>
+<li>
+<p><strong>線性代數</strong></p>
+<p>行為上來講就是去求線性運算子裡面的代數，或者去了解它的特性。意義有很多，學後便知。<br>
+<s>有講跟沒講一樣。</s></p>
+</li>
+<li>
+<p>$function~V.S~operator$</p>
+<p>通常我們講function是指一個函數(´･ω･`)；而operator則是指運算元(就是某種運算方式)。
+後者可以指某個函數、某個矩陣運算、某種稀奇古怪的運算方式。因此為了方便，後面若再出現函數的字眼，可以自動把它翻譯成operator。事實上，任何operator，只要符合定義2，都可以稱作線性。</p>
+</li>
+</ul>
+<h3>為什麼要學線性代數🤔？ 學了又可以幹嘛🤔？</h3>
+<ul>
+<li>
+<p><strong>現實層面</strong></p>
+<ul>
+<li>為了學分R</li>
+<li>以後看某些paper才不會查個專有名詞結果還看不懂查詢內容</li>
+<li>未來某些課程會用到相關知識</li>
+<li>線代學得好，專題沒煩惱（不，還是很煩惱</li>
+<li>多了一個可以一本正經胡說八道的素材</li>
+</ul>
+</li>
+<li>
+<p><strong>官腔層面</strong></p>
+<ul>
+<li>去問老師。</li>
+</ul>
+</li>
+</ul>
+</p></div><div class="content" id="content2"><p><h3>$Def$ 可加性($Additivity$) :</h3>
+<p>令 $f(x)$ 為一函數，$s,t \in D_f$。<br>
+若$f(s) + f(t) = f(s+t) , \forall ~s,t$。則我們稱 $f(x)$ 具有<strong>可加性</strong></p>
+<ul>
+<li>
+<p>範例：</p>
+<p>Let $f(x)=87x$，$s,t \in D_f$.Then：</p>
+<p>$f(s)+f(t)=87s+87t=87(s+t)=f(s+t)$</p>
+<p>$Therefore, f(x)~is~an~additivity~function.$</p>
+</li>
+<li>
+<p>範例：</p>
+<p>Let $f(x) = \int x {\rm d}x$，$s=ax+b~,~t=cx+d$.Then：</p>
+<p>$s+t= (a+b)x+(c+d)$</p>
+<p>$f(s) = \int (ax+b) {\rm d}x = \frac{1}{2}ax^2+bx+C$</p>
+<p>$f(t) = \int (cx+d) {\rm d}x = \frac{1}{2}cx^2+dx+C$</p>
+<p>$f(s)+f(t) = \frac{1}{2}(a+c)x^2+(b+d)x+C$</p>
+<p>$f(s+t) = \int [(a+b)x+(c+d)] {\rm d}x = \frac{1}{2}(a+b)x^2+(c+d)x+C$</p>
+<p>∵ $f(s)+f(t)=f(s+t)=\frac{1}{2}(a+b)x^2+(c+d)x+C$</p>
+<p>∴ $f(x)$ is additivity when $s,t \in P_1$</p>
+<p><em>作者碎碎念</em>：<br>
+事實上對於$n$次多項式都有這性質，就是微積分裡面常見的$\int (f(x) \pm g(x)) {\rm d}x = \int f(x) {\rm d}x \pm \int g(x) {\rm d}x$。不過在這邊我只是為了展示可加性，所以就不證明它了( ´ ▽ ` )ﾉ</p>
+</li>
+<li>
+<p>範例：</p>
+<p>Let $f(x)=94x+87$，$s,t \in D_f.$Then：</p>
+<p>$f(s)+f(t)=(94s+87)+(94t+87)=94(s+t)+174$</p>
+<p>$f(s+t)=94(s+t)+87 \neq f(s)+f(t)=94(s+t)+174$</p>
+<p>$Therefore, f(x)~is~not~an~additivity~function.$</p>
+</li>
+</ul>
+</p></div><div class="content" id="content3"><p><h3>$Def$ 齊次性($Homogeneous$) :</h3>
+<p>令 $f(x)$ 為一函數，$a$ 為常數<br>
+若$f(ax)=a~f(x)$，則稱$f(x)~is~a~homogeneous~funcion$</p>
+<ul>
+<li>
+<p>範例：</p>
+<p>Let $f(x)=0~,~a \in$ ℝ .Then:</p>
+<p>$f(ax)=0=a~f(x)$</p>
+<p>$Therefore, f(x)~is~a~homogeneous~function.$</p>
+</li>
+<li>
+<p>範例：</p>
+<p>Let $f(x) = a_1x+a_0 \in P_1~,~a_1,a_0 \in$常數 $~,~b \in$ ℝ .Then:</p>
+<p>$f(bx)=a_1bx+a_0$</p>
+<p>$b~f(x)=a_1bx+a_0b$</p>
+<p>When $a_0=0$ , $f(x)~is~a~homogeneous~function.$</p>
+<p>Otherwise , $f(x)~is~not~a~homogeneous~function.$</p>
+</li>
+</ul>
+</p></div><div class="content" id="content4"><p><h4><em>作者碎碎念</em>：數學上有些常用$der$符號，高中隨便學，大學當常識，導致常常看不懂式子在公三小，所以便有了這篇(´･ω･`)。由於想到什麼就加上去，所以順序會很混亂請見諒$www$</h4>
+<ul>
+<li>
+<p><s>回去讀高中數學系列</s>  </p>
+<ul>
+<li>
+<p>$\in$</p>
+<p>In，翻譯為屬於。</p>
+</li>
+<li>
+<p>$\notin$</p>
+<p>Not in，翻譯為不屬於。</p>
+</li>
+<li>
+<p>$\subset$</p>
+<p>Subset，翻譯為包含於。<br>
+A $\subset$ B讀作 A包含於B。<br>
+A is a subset of B.<br>
+意義：A有的元素B一定有，可是B有A所沒有的元素。</p>
+</li>
+<li>
+<p>$\supset$</p>
+<p>Supset，翻譯為包含。<br>
+請自己舉一反三(´･ω･`)。<br>
+<em>其實本人很少看到有人用這符號，都用下面那個居多</em></p>
+</li>
+<li>
+<p>$\subseteq$</p>
+<p>跟 $\subset$有87%像。有點小小的不同如下：<br>
+A $\subseteq$ B 指的是<br>
+A is a subset of B <strong>or</strong> A is equal to B.<br>
+意義：A可能是B的子集合，也可能跟B等價</p>
+</li>
+<li>
+<p>$\supseteq$</p>
+<p>請自己舉一反三(´･ω･`)。</p>
+</li>
+<li>
+<p>$\not\subset$</p>
+<p>Not subset，就是非子集合拉。</p>
+</li>
+<li>
+<p>$\bigcap$</p>
+<p>Intersection，翻譯為交集。</p>
+</li>
+<li>
+<p>$\bigcup$</p>
+<p>Union，翻譯為聯集。</p>
+</li>
+<li>
+<p>$\bigwedge$</p>
+<p>邏輯上的and，翻譯為且。</p>
+</li>
+<li>
+<p>$\bigvee$</p>
+<p>邏輯上的or，翻譯為或。</p>
+</li>
+<li>
+<p>$\forall$</p>
+<p>For all，翻譯為對於所有的...。<br>
+<strong>注意</strong>：使用 $\forall$ 之前，記得先明確定義所設的參數，不然別人不知道你在all尛。</p>
+</li>
+<li>
+<p>$\exists$</p>
+<p>Exist，翻譯為存在。<br>
+<strong>備註</strong>:只要有就算存在，不管是一個、兩個、還是要你命三千個。<br>
+$\exists$! 為存在且唯一，代表只有一個(´･ω･`)。</p>
+</li>
+<li>
+<p>ℂ<br>
+Complex (number)，翻譯為複數。</p>
+</li>
+<li>
+<p>ℝ<br>
+Real (number)，翻譯為實數。<br>
+正數有時會以 ℝ$^+$ 表示；反之 ℝ$^-$ 為負數。</p>
+</li>
+<li>
+<p>ℚ<br>
+Rational (number)，翻譯為有理數。<br>
+假設無理數的集合用S表示，則S可能有以下幾種表達方式：<br>
+S = ℚ' = {ℝ/ℚ} = {$x|x \in$ ℝ , $x \notin$ ℚ}</p>
+</li>
+<li>
+<p>ℤ<br>
+Integer (number)，翻譯為整數。<br>
+非負整數經常以 ℤ$^+$ 表示。其實就是 ℕ ∪ 0。</p>
+</li>
+<li>
+<p>ℕ<br>
+Natural (number)，翻譯為正整數/自然數。</p>
+</li>
+<li>
+<p>集合表示方式</p>
+<p>令S為一個集合，最常見的表示方式為 S = {x|x的屬性}<br>
+e.g 偽娘 = {妹子｜有JJ}((這個例子真的好嗎...<br>
+e.g ℕ = {$x|x \in$ℤ$^+,x \neq 0$}</p>
+</li>
+</ul>
+</li>
+<li>
+<p>$D$＋下標文字。 e.g: $D_f~,~D_g~,~D_h$...<br>
+$D$的原文是Domain.<br>
+$D_f$指的就是 $f$ 的定義域；$D_g$指的就是 $g$ 的定義域。以此類推。</p>
+</li>
+<li>
+<p>$P$＋下標數字。 e.g: $P,P_1,P_2,P_n$...<br>
+$P$的原文是Polynomial.<br>
+$P_1$指的是不高於一次的多項式；$P_2$指的是不高於二次的多項式。以此類推。<br>
+所以說$P_1 \subset P_2 \subset P_3 \subset ... \subset P_n$。<br>
+另外，$P$指的就是多項式，沒有指定次數，所以也可以是無限次；<br>
+至於$P_n$指的就是n次多項式，n是多少不知道，反正不重要(´･ω･`)，反正不會是無限次。</p>
+</li>
+</ul>
+</p></div></div></div><div class="to-top"><a class="paper-btn margin" href="#top">Top</a></div><div class="row flex-right"><p>Created by <span class="badge secondary">@ToolBuddy/papoGen(papercss)</span></p></div></div></div></body></html>
