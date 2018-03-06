@@ -12,4 +12,4 @@ Learning Linear Algebra for fun!
 
 ## 目錄
 
-* [Chapter 0]()
+* [Chapter 0](https://toolbuddy.github.io/Linear-Algebra-4fun/ch0/)
